@@ -1,0 +1,31 @@
+<div class="col-8 my-0 mx-auto pt-5">
+    <div class="text-center py-3">
+        <button class="btn btn-primary" type="button" (click)="redirectTo()">
+            Post Job
+        </button>
+    </div>
+    @if (jobs) {
+        <div class="accordion" id="jobAccordion" >
+            @for (job of jobs; track job.title; let index = $index) {
+                <div class="accordion-item">
+                    <h2 class="accordion-header m-0">
+                        <button class="accordion-button btn-primary" type="button" data-bs-toggle="collapse" attr.data-bs-target="#collapse{{index}}" aria-expanded="true" attr.aria-controls="collapse{{index}}">
+                        {{ job.title }}
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapse{{index}}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <div [innerHTML]="job.description"></div>
+                    </div>
+                </div>
+            
+            }@empty {
+                <p>There are no jobs.</p>
+            }     
+        </div>
+    } @else{
+        <p>There are no jobs.</p>
+    }
+</div>
+
