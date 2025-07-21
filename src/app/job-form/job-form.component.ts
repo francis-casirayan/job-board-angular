@@ -29,7 +29,6 @@ export class JobFormComponent implements OnInit {
 	}
 
 	submit() {
-		console.log(this.jobForm)
 		if (this.jobForm.valid) {
 		  this.jobService.postJob(this.jobForm.value).subscribe(() => {
 		    alert('Job posted!');
